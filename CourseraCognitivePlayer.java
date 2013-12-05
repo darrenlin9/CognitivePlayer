@@ -16,7 +16,8 @@ import org.ggp.base.util.statemachine.exceptions.MoveDefinitionException;
 import org.ggp.base.util.statemachine.exceptions.TransitionDefinitionException;
 import org.ggp.base.util.statemachine.implementation.prover.ProverStateMachine;
 
-public final class CourseraCognitivePlayer extends StateMachineGamer{
+public final class CourseraCognitivePlayer extends StateMachineGamer
+{
 	/**
 	 * Employs a simple sample "Monte Carlo" algorithm to come up with the best playable move,
 	 * and then spends the last few seconds searching for a potential terminating move.
@@ -73,7 +74,8 @@ public final class CourseraCognitivePlayer extends StateMachineGamer{
 		}
 		
 		// Searches for a state where the opponent could win the game and "blocks" it.
-		for(Move moveUnderConsideration : moves) {
+		for(Move moveUnderConsideration : moves) 
+		{
 		    MachineState nextState = theMachine.getNextState(getCurrentState(), theMachine.getRandomJointMove(getCurrentState(), getRole(), moveUnderConsideration));
 
 		    if(theMachine.isTerminal(nextState)) 
@@ -95,12 +97,12 @@ public final class CourseraCognitivePlayer extends StateMachineGamer{
 		notifyObservers(new GamerSelectedMoveEvent(moves, selection, stop - start));
 		return selection;
 	}
-		private int[] depth = new int[1];
-		int performDepthChargeFromMove(MachineState theState, Move myMove) 
-		{	    
-		    StateMachine theMachine = getStateMachine();
-		    try 
-		    {
+	private int[] depth = new int[1];
+	int performDepthChargeFromMove(MachineState theState, Move myMove) 
+	{	    
+		StateMachine theMachine = getStateMachine();
+		try 
+		{
 	            MachineState finalState = theMachine.performDepthCharge(theMachine.getRandomNextState(theState, getRole(), myMove), depth);
 	            return theMachine.getGoal(finalState, getRole());
 	        } catch (Exception e) 
@@ -108,7 +110,7 @@ public final class CourseraCognitivePlayer extends StateMachineGamer{
 	            e.printStackTrace();
 	            return 0;
 	        }
-		}
+	}
 	
 
 	// This is the default State Machine
