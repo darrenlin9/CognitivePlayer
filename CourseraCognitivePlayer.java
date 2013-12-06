@@ -21,6 +21,7 @@ public final class CourseraCognitivePlayer extends StateMachineGamer
 	/**
 	 * Employs a simple sample "Monte Carlo" algorithm to come up with the best playable move,
 	 * and then spends the last few seconds searching for a potential terminating move.
+	 * This program is mostly a modification of a few basic algorithms provided by the Stanford class.
 	 */
 	@Override
 	public Move stateMachineSelectMove(long timeout) throws TransitionDefinitionException, MoveDefinitionException, GoalDefinitionException
